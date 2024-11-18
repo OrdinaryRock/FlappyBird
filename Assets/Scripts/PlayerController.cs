@@ -82,7 +82,7 @@ public class PlayerController : MonoBehaviour
 
     private void EndGame()
     {
-        GlobalVar.SetScore();
+        GlobalVar.SaveHighScore();
         GlobalVar.score = 0;
         AudioSource.PlayClipAtPoint(impactSound, Camera.main.transform.position);
         OnEndGame.Invoke();

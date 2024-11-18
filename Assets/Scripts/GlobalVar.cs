@@ -8,7 +8,7 @@ public static class GlobalVar
     public static int score;
     public static int highScore;
 
-    public static void SetScore()
+    public static void SaveHighScore()
     {
         PlayerPrefs.SetInt("highscore", highScore);
     }
