@@ -5,7 +5,7 @@ using UnityEngine;
 public class PipeSpawner : MonoBehaviour
 {
     [SerializeField]
-    private GameObject pipePrefab;
+    private GameObject[] pipePrefabs;
 
     [SerializeField]
     private float minSpawnDelay = 1.5f;
@@ -15,16 +15,9 @@ public class PipeSpawner : MonoBehaviour
     [SerializeField]
     private float verticalSpawnRange = 2f;
 
-    // Start is called before the first frame update
-    void Start()
+    public void Activate()
     {
         InvokeSpawnPipe();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 
     private void InvokeSpawnPipe()
@@ -37,8 +30,9 @@ public class PipeSpawner : MonoBehaviour
     {
         Vector2 spawnOffset = new Vector2();
         spawnOffset.y = Random.Range(verticalSpawnRange, -verticalSpawnRange);
+        int pipeIndex = Random.Range(0, pipePrefabs.Length);
 
-        Instantiate(pipePrefab, (Vector2) transform.position + spawnOffset, transform.rotation);
+        Instantiate(pipePrefabs[pipeIndex], (Vector2) transform.position + spawnOffset, transform.rotation);
 
         InvokeSpawnPipe();
     }
